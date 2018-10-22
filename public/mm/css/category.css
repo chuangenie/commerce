@@ -15,6 +15,31 @@
   float: left;
   width: 80px;
 }
+.my-content .category-left .links {
+  background: #fff;
+}
+.my-content .category-left .links a {
+  display: block;
+  line-height: 45px;
+  text-align: center;
+  border-right: 1px solid #e0e0e0;
+  border-bottom: 1px solid #e0e0e0;
+}
 .my-content .category-right {
   margin-left: 90px;
+}
+.my-content .category-right .brand-list {
+  margin-top: 10px;
+  background: #fff;
+}
+.my-content .category-right .brand-list li {
+  width: 33.33%;
+  float: left;
+}
+.my-content .category-right .brand-list li img {
+  display: block;
+  width: 100%;
+}
+.my-content .category-right .brand-list li p {
+  text-align: center;
 }
