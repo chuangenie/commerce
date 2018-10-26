@@ -1,59 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<link rel="stylesheet" href="assets/mui/css/mui.min.css">
-	<link rel="stylesheet" href="css/base.css">
-	<link rel="stylesheet" href="css/search-result.css">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="assets/mui/css/mui.min.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/search-result.css">
     <link rel="stylesheet" href="./assets/fontAwesome/css/font-awesome.min.css"/>
-	<script src="assets/mui/js/mui.min.js"></script>
-	<script src="assets/zepto/zepto.min.js"></script>
-	<script src="assets/artTemplate/template-native.js"></script>
-	<script src="js/category.js"></script>
+    <script src="assets/mui/js/mui.min.js"></script>
+    <script src="assets/zepto/zepto.min.js"></script>
+    <script src="assets/artTemplate/template-native.js"></script>
+    <script src="js/search-result.js"></script>
 </head>
 <body>
-	<header class="mui-bar mui-bar-nav my-header">
-		<h1 class="mui-title">搜索中心</h1>
-	</header>
-	<nav class="mui-bar mui-bar-tab my-footer">
-		<a class="mui-tab-item" href="index.html">
-			<span class="mui-icon mui-icon-home"></span>
-			<span class="mui-tab-label">首页</span>
-		</a>
-		<a class="mui-tab-item mui-active" href="category.html">
-			<span class="mui-icon mui-icon-bars"></span>
-			<span class="mui-tab-label">分类</span>
-		</a>
-		<a class="mui-tab-item" href="cart.html">
-			<span class="mui-icon fa fa-shopping-cart"></span>
-			<span class="mui-tab-label">购物车</span>
-		</a>
-		<a class="mui-tab-item" href="user.html">
-			<span class="mui-icon mui-icon-person"></span>
-			<span class="mui-tab-label">会员中心</span>
-		</a>
-	</nav>
-	<div class="mui-content">
-		<div class="container">
-			<!-- 搜索框 -->
-			<div class="search">
-				<input type="text" placeholder="搜索您喜欢的商品">
-				<input type="button" value="搜索" id="search-btn">
-			</div>
-			<!-- /搜索框 -->
+<header class="mui-bar mui-bar-nav my-header">
+    <h1 class="mui-title">搜索结果</h1>
+</header>
+<nav class="mui-bar mui-bar-tab my-footer">
+    <a class="mui-tab-item mui-active" href="index.html">
+        <span class="mui-icon mui-icon-home"></span>
+        <span class="mui-tab-label">首页</span>
+    </a>
+    <a class="mui-tab-item" href="category.html">
+        <span class="mui-icon mui-icon-bars"></span>
+        <span class="mui-tab-label">分类</span>
+    </a>
+    <a class="mui-tab-item" href="cart.html">
+        <span class="mui-icon  fa fa-shopping-cart"></span>
+        <span class="mui-tab-label">购物车</span>
+    </a>
+    <a class="mui-tab-item" href="user.html">
+        <span class="mui-icon mui-icon-person"></span>
+        <span class="mui-tab-label">会员中心</span>
+    </a>
+</nav>
+<div id="refreshContainer">
+    <div>
+        <div class="mui-row filter">
+            <div class="mui-col-xs-6" id="priceSort">
+                价格
+                <span class="mui-icon mui-icon-arrowdown"></span>
+            </div>
+            <div class="mui-col-xs-6" id="numSort">
+                销量
+                <span class="mui-icon mui-icon-arrowdown"></span>
+            </div>
+        </div>
+        <div class="product">
+            <ul class="mui-clearfix" id="search-box">
 
-			<!-- 搜索历史 -->
-			<div class="history-top mui-clearfix">
-				<span class="title mui-pull-left">搜索历史</span>
-				<span class="clear mui-pull-right mui-icon mui-icon-trash" id="clearBtn">清空历史</span>
-			</div>
-			<ul class="mui-table-view" id="history-box">
-
-			</ul>
-			<!-- /搜索历史 -->
-		</div>
-	</div>
+            </ul>
+        </div>
+    </div>
+</div>
+<script id="searchTpl" type="text/template">
+    <% for(var i=0;i< data.length;i++){ %>
+    <li>
+        <a href="detail.html?id=<%=data[i].id %>">
+            <img src="<%=data[i].pic[0].picAddr %>">
+					<span class="name">
+						<%=data[i].proName %>
+					</span>
+            <p>
+                <span>¥<%=data[i].price %></span>
+                <span>¥<%=data[i].oldPrice %></span>
+            </p>
+            <span class="buy-now">立即购买</span>
+        </a>
+    </li>
+    <% } %>
+</script>
+<script>
+    mui('.my-footer').on('tap','a',function(){
+        window.top.location.href=this.href;
+    });
+</script>
 </body>
 </html>
