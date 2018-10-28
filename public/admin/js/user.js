@@ -20,7 +20,7 @@ $(function(){
 	$('body').on('click','#deleteBtn',function(){
 
 		var id = $(this).attr('data-id');
-		var isDelete = Number($(this).attr('data-isDelete')) ? 0 : 1;
+		var isDelete = parseInt($(this).attr('data-isDelete')) ? 0 : 1;
 
 		alert(isDelete)
 
