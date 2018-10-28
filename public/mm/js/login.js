@@ -9,12 +9,12 @@ $(function(){
         var password = $.trim($("[name='password']").val());
 
         if(!username){
-            mui.toast("ÇëÊäÈëÓÃ»§Ãû");
+            mui.toast("è¯·è¾“å…¥ç”¨æˆ·å");
             return;
         }
 
         if(!password){
-            mui.toast("ÇëÊäÈëÃÜÂë");
+            mui.toast("è¯·è¾“å…¥ç”¨æˆ·å¯†ç ");
             return;
         }
 
@@ -26,13 +26,13 @@ $(function(){
                 password: password
             },
             beforeSend: function(){
-                $('#login-btn').html("ÕıÔÚµÇÂ¼...");
+                $('#login-btn').html("æ­£åœ¨ç™»å½•...");
             },
             success: function(res){
 
-                mui.toast("µÇÂ¼³É¹¦");
+                mui.toast("ç™»å½•æˆåŠŸ");
 
-                $('#login-btn').html("µÇÂ¼");
+                $('#login-btn').html("ç™»å½•");
 
                 setTimeout(function(){
                     location.href = "user.html";
